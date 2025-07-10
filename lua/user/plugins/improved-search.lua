@@ -3,8 +3,7 @@ local function desc(text)
 end
 
 return {
-	dir = "/home/wcs/local/improved-search.nvim/",
-	dev = true,
+	"wcs7777/improved-search.nvim",
 	opts = {
 		hlsearch = false,
 	},
