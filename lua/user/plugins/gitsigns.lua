@@ -34,14 +34,16 @@ return {
             end, desc('Previous chunk'))
 
             -- Actions
-            vim.keymap.set('n', '<leader>gh', gitsigns.stage_hunk, desc('Stage hunk'))
-            vim.keymap.set('v', '<leader>gh', function() gitsigns.stage_hunk({ vim.fn.line('.'), vim.fn.line('v') }) end, desc('Stage hunk'))
-            vim.keymap.set('n', '<leader>gs', gitsigns.stage_buffer, desc('Stage buffer'))
-            vim.keymap.set('n', '<leader>gr', gitsigns.reset_buffer_index, desc('Reset buffer stage'))
+            vim.keymap.set('n', '<leader>gh', gitsigns.stage_hunk, desc('Git stage hunk'))
+            vim.keymap.set('v', '<leader>gh', function() gitsigns.stage_hunk({ vim.fn.line('.'), vim.fn.line('v') }) end, desc('Git stage hunk'))
+            vim.keymap.set('n', '<leader>gs', gitsigns.stage_buffer, desc('Git stage buffer'))
+            vim.keymap.set('n', '<leader>gi', gitsigns.reset_buffer_index, desc('Reset buffer stage'))
             vim.keymap.set('n', '<leader>gp', gitsigns.preview_hunk, desc('Preview hunk'))
             vim.keymap.set('n', '<leader>gd', function() gitsigns.diffthis(nil, { vertical = true, split = "botright" }) end, desc('Git diffthis'))
             vim.keymap.set('n', '<leader>ga', function() gitsigns.setqflist('all') end, desc('Git list all changes'))
             vim.keymap.set('n', '<leader>gu', gitsigns.setqflist, desc('Git list changes'))
+            vim.keymap.set('n', '<leader>gr', gitsigns.reset_hunk, desc('Git reset hunk'))
+            vim.keymap.set('v', '<leader>gr', function() gitsigns.reset_hunk({ vim.fn.line('.'), vim.fn.line('v') }, { greedy = false }) end, desc('Git reset hunk'))
 
             -- Toggles
             vim.keymap.set('n', '<leader>gtb', gitsigns.toggle_current_line_blame, desc('Git toggle current line blame'))
