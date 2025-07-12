@@ -2,22 +2,20 @@ vim.opt.background = 'light'
 
 return {
     {
-        "yorik1984/newpaper.nvim",
-        name = "newpaper",
+        'yorik1984/newpaper.nvim',
+        name = 'newpaper',
         lazy = false,
         priority = 1000,
         opts = {
-            style = "light",
+            style = 'light',
             hide_eob = true,
             colors = {
-                white = "#F0F0F0",
-                bg = "#F0F0F0",
-                disabled = '#7f7f7f',
+                white = '#fcfbf6',
+                bg = '#fcfbf6',
+                silver = '#F0EFEA',
             },
             colors_advanced = {
-                booleans = '#349479',
-                cursor = '#ABC2FF',
-                search_bg = '#AFD7FF',
+                active = '#F0EFEA'
             },
             italic_strings      = false,
             italic_comments     = false,
@@ -31,46 +29,39 @@ return {
         end,
     },
     {
-        "rose-pine/neovim",
-        name = "rose-pine",
+        'navarasu/onedark.nvim',
+        priority = 1000,
+        lazy = true,
+        config = function()
+            require('onedark').setup {
+                style = 'light'
+            }
+            -- Enable theme
+            require('onedark').load()
+        end
+    },
+    {
+        'rose-pine/neovim',
+        name = 'rose-pine',
         lazy = true,
         priority = 1000,
         config = function()
             require('rose-pine').setup({
                 disable_italics = true,
             })
-            vim.cmd("colorscheme rose-pine")
+            vim.cmd('colorscheme rose-pine')
         end
     },
     {
-        "catppuccin/nvim",
-        name = "catppuccin",
+        'catppuccin/nvim',
+        name = 'catppuccin',
         lazy = true,
         priority = 1000,
         config = function()
             require('catppuccin').setup({
                 no_italics = true,
             })
-            vim.cmd("colorscheme catppuccin")
-        end
-    },
-    {
-        "Mofiqul/vscode.nvim",
-        lazy = true,
-        priority = 1000,
-        config = function()
-            require('vscode').setup({
-                italic_comments  = true,
-            })
-            vim.cmd("colorscheme vscode")
-        end
-    },
-    {
-        "EdenEast/nightfox.nvim",
-        lazy = true,
-        priority = 1000,
-        config = function()
-            vim.cmd("colorscheme nightfox")
+            vim.cmd('colorscheme catppuccin')
         end
     },
 }
