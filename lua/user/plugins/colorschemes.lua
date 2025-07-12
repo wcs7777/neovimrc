@@ -10,12 +10,15 @@ return {
             style = 'light',
             hide_eob = true,
             colors = {
-                white = '#fcfbf6',
-                bg = '#fcfbf6',
+                white  = '#FCFBF6',
+                bg     = '#FCFBF6',
                 silver = '#F0EFEA',
             },
             colors_advanced = {
-                active = '#F0EFEA'
+                active        = '#F0EFEA',
+                cursor_nr_bg  = '#F7F6F1',
+                linenumber_bg = '#F7F6F1',
+                git_sign_bg   = '#F7F6F1',
             },
             italic_strings      = false,
             italic_comments     = false,
