@@ -42,7 +42,3 @@ require('mason-lspconfig').setup({
     ensure_installed = ensure_installed,
     automatic_enable = true,
 })
-
-vim.api.nvim_create_user_command("MasonInstallAll", function ()
-    vim.cmd("MasonInstall " .. table.concat(ensure_installed, " "))
-end, {})
