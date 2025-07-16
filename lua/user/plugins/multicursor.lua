@@ -65,7 +65,8 @@ return {
         set({"n", "x"}, "<leader>A", mc.matchAllAddCursors, desc("Multicursor add multiple cursors for all word/selection"))
 
         -- Add a cursor to every search result in the buffer.
-        set("n", "<leader>sac", mc.searchAllAddCursors, desc("Multicursor add multicursor for all search result"))
+        set("n", "<leader>san", function() mc.searchAddCursor(1) end, desc("Multicursor add cursor and jump to next search result"))
+        set("n", "<leader>sac", mc.searchAllAddCursors, desc("Multicursor add cursor for all search result"))
 
         -- Mappings defined in a keymap layer only apply when there are
         -- multiple cursors. This lets you have overlapping mappings.
