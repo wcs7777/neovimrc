@@ -3,3 +3,4 @@ linter
 runner
 python rename file update imports
 try snacks.explorer instead of neo-tree
+https://github.com/nvimtools/hydra.nvim
