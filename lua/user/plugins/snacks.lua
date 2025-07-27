@@ -52,6 +52,7 @@ return {
     },
     init = function ()
         vim.api.nvim_create_autocmd("User", {
+            group = vim.api.nvim_create_augroup('user-snacks-toggle-plugins', { clear = true }),
             pattern = "VeryLazy",
             callback = function()
                 local function desc(text)
