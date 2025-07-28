@@ -3,7 +3,7 @@ return {
     event = { "BufReadPre" },
     opts = {
         events = { 'InsertLeave', 'TextChanged' },
-        silent = false,
+        silent = true,
         save_fn = nil,
         timeout = 500,
         exclude_ft = { 'neo-tree' },
