@@ -8,3 +8,10 @@ vim.api.nvim_create_autocmd("TextYankPost", {
         end
     end,
 })
+vim.api.nvim_create_autocmd("VimEnter", {
+    group = vim.api.nvim_create_augroup('user-change-cwd', { clear = true }),
+    pattern = "*",
+    callback = function()
+        vim.cmd('cd ' .. vim.fn.expand('%:h'))
+    end,
+})
