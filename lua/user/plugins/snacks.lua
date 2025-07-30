@@ -55,9 +55,8 @@ return {
             group = vim.api.nvim_create_augroup('user-snacks-toggle-plugins', { clear = true }),
             pattern = "VeryLazy",
             callback = function()
-                local function desc(text)
-                    return { noremap = true, silent = true, desc = text }
-                end
+                local desc = require('user.utils').desc
+
                 local function toggle_words()
                     local enable = not Snacks.words.is_enabled()
                     if enable then

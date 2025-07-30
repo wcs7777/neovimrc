@@ -1,10 +1,5 @@
-local function desc(text)
-    return { noremap = true, silent = true, desc = text }
-end
-
-local function cmd(command)
-    return function() vim.cmd(command) end
-end
+local desc = require('user.utils').desc
+local cmd = require('user.utils').cmd
 
 return {
     "folke/trouble.nvim",

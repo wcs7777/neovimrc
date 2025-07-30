@@ -1,6 +1,4 @@
-local function desc(text)
-    return { noremap = true, silent = true, desc = text }
-end
+local desc = require('user.utils').desc
 
 return {
 	"wcs7777/improved-search.nvim",

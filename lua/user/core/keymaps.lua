@@ -10,13 +10,8 @@ local utils = require('user.utils')
 local notify = utils.notify
 local vert_column = '80'
 
-local function desc(text)
-    return { noremap = true, silent = true, desc = text }
-end
-
-local function cmd(command)
-    return function() vim.cmd(command) end
-end
+local desc = require('user.utils').desc
+local cmd = require('user.utils').cmd
 
 local function print_copy_cur_file()
     vim.fn.setreg('+', vim.fn.expand('%:p'))

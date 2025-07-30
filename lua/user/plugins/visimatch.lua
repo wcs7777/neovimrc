@@ -1,9 +1,7 @@
 local notify = require('user.utils').notify
 local highlight_name = 'MyVisimatchHighlight'
 
-local function desc(text)
-    return { noremap = true, silent = true, desc = text }
-end
+local desc = require('user.utils').desc
 
 ---@param color string   Hex color
 ---@param factor number   factor > 1.0 = lighten, 0 < factor < 1.0 = darker
