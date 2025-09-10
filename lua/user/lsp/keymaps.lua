@@ -22,7 +22,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
         vim.keymap.set('n', 'gr', function() vim.lsp.buf.references(nil, { loclist = false }) end, desc('References'))
         vim.keymap.set('n', 'gI', function() vim.lsp.buf.implementation({ loclist = false }) end, desc('Implementations'))
         vim.keymap.set('n', 'gy', function() vim.lsp.buf.type_definition({ loclist = false }) end, desc('Type definition'))
-        vim.keymap.set('n', '<leader>ls', function() vim.lsp.buf.document_symbol({ loclist = false }) end, desc('Symbols'))
+        vim.keymap.set('n', '<leader>ls', function() vim.lsp.buf.document_symbol({ loclist = true }) end, desc('Symbols'))
         vim.keymap.set('n', '<leader>lw', function() vim.lsp.buf.workspace_symbol('', { loclist = false }) end, desc('Workspace Symbols'))
         vim.keymap.set('n', '<leader>lq', function() vim.lsp.buf.workspace_symbol(nil, { loclist = false }) end, desc('Workspace Symbols query'))
         vim.keymap.set('n', '<leader>clr', vim.lsp.codelens.run, desc('Codelens run'))
