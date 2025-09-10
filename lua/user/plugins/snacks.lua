@@ -47,6 +47,7 @@ return {
         { "<leader>plI", function() Snacks.picker.lsp_implementations() end, desc = "LSP Implementations" },
         { "<leader>ply", function() Snacks.picker.lsp_type_definitions() end, desc = "LSP Type definition" },
         { "<leader>pls", function() Snacks.picker.lsp_symbols() end, desc = "LSP Symbols" },
+        { "<leader>plf", function() Snacks.picker.lsp_symbols({ filter = { default = { 'Function', 'Method'} } }) end, desc = "LSP Symbols Functions" },
         { "<leader>plw", function() Snacks.picker.lsp_workspace_symbols() end, desc = "LSP Workspace Symbols" },
         { "<leader>plc", function() Snacks.picker.lsp_config() end, desc = "LSP Config" },
     },
