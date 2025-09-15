@@ -6,6 +6,7 @@ return {
         delay = function(ctx)
             return ctx.plugin and 0 or 900
         end,
+        show_help = false,
     },
     keys = {
         {
@@ -16,5 +17,4 @@ return {
             desc = "Buffer Local Keymaps (which-key)",
         },
     },
-    show_help = false,
 }
