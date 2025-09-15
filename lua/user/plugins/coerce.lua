@@ -4,7 +4,7 @@ return {
     opts = {
         default_mode_keymap_prefixes = {
             normal_mode = "<leader>ck",
-            motion_mode = "gcr",
+            motion_mode = "gck",
             visual_mode = "<leader>ck",
         },
     },
