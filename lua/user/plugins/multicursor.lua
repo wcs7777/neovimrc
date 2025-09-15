@@ -10,65 +10,87 @@ return {
 
         local set = vim.keymap.set
 
-        -- Enable and clear cursors using escape.
-        local function enable_clear_cursors()
+        --- @param dir -1|1 Direction
+        local function lineAddCursor(dir)
+            return function()
+                local top, bot
+                mc.action(function(ctx)
+                    local query = { enabledCursors = true }
+                    top = ctx:mainCursor() == ctx:firstCursor(query)
+                    bot = ctx:mainCursor() == ctx:lastCursor(query)
+                end)
+                if top == bot or (top and dir == -1) or (bot and dir == 1) then
+                    mc.lineAddCursor(dir, { skipEmpty = false })
+                else
+                    mc.deleteCursor()
+                end
+            end
+        end
+
+        -- Toggle cursos
+        local function toggle_cursors()
             if not mc.cursorsEnabled() then
                 mc.enableCursors()
             else
-                mc.clearCursors()
+                mc.disableCursors()
             end
         end
 
-        --- @param dir -1|1 Direction
-        local function lineAddCursor(dir)
-            local top, bot
-            mc.action(function(ctx)
-                local query = { enabledCursors = true }
-                top = ctx:mainCursor() == ctx:firstCursor(query)
-                bot = ctx:mainCursor() == ctx:lastCursor(query)
-            end)
-            if top == bot or (top and dir == -1) or (bot and dir == 1) then
-                mc.lineAddCursor(dir)
-            else
-                mc.deleteCursor()
-            end
-        end
+        -- Line
+        set("n", "<C-Up>", lineAddCursor(-1), desc("Multicursor add cursor above"))
+        set("n", "<C-Down>", lineAddCursor(1), desc("Multicursor add cursor below"))
 
-        -- Add or skip cursor above/below the main cursor.
-        set({"n", "x"}, "<C-Up>", function() mc.lineAddCursor(-1) end, desc("Multicursor add cursor above"))
-        set({"n", "x"}, "<C-Down>", function() mc.lineAddCursor(1) end, desc("Multicursor add cursor below"))
-        set({"n", "x"}, "<M-Up>", function() lineAddCursor(-1) end, desc("Multicursor add cursor above"))
-        set({"n", "x"}, "<M-Down>", function() lineAddCursor(1) end, desc("Multicursor add cursor below"))
-        set({"n", "x"}, "<leader><Up>", function() mc.lineSkipCursor(-1) end, desc("Multicursor skip line above"))
-        set({"n", "x"}, "<leader><Down>", function() mc.lineSkipCursor(1) end, desc("Multicursor skip line below"))
+        -- Search add cursor
+        set("n", "<leader>S", function() mc.searchAddCursor(1) end, desc("Multicursor add cursor and jump to next search result"))
 
-        -- Add or skip adding a new cursor by matching word/selection
-        set({"n", "x"}, "<leader>N", function() mc.matchAddCursor(-1) end, desc("Multicursor add cursor by match above"))
-        set({"n", "x"}, "<leader>n", function() mc.matchAddCursor(1) end, desc("Multicursor add cursor by match below"))
-        set({"n", "x"}, "<M-c>", function() mc.matchAddCursor(1) end, desc("Multicursor add cursor by match below"))
-        set({"n", "x"}, "<leader>Sc", function() mc.matchSkipCursor(-1) end, desc("Multicursor skip add cursor by match above"))
-        set({"n", "x"}, "<leader>sc", function() mc.matchSkipCursor(1) end, desc("Multicursor skip add cursor by match below"))
+        -- Search add all
+        set("n", "<leader>N", mc.searchAllAddCursors, desc("Multicursor add cursor for all search results"))
 
-        -- Disable and enable cursors.
-        set({"n", "x"}, "<leader>tm", mc.toggleCursor, desc("Multicursor toggle multicursor in line"))
-        set({"n", "x"}, "<M-t>", mc.toggleCursor, desc("Multicursor toggle multicursor in line"))
+        -- Match add cursor
+        set("x", "<leader>D", function() mc.matchAddCursor(1) end, desc("Multicursor add cursor for match and go to next"))
 
-        -- Pressing `gaip` will add a cursor on each line of a paragraph
-        set("n", "ga", mc.addCursorOperator)
+        -- Match add all
+        set("x", "<leader>N", mc.matchAllAddCursors, desc("Multicursor add cursor for all match selection"))
 
-        -- bring back cursors if you accidentally clear them
+        -- Insert selection
+        set("x", "<leader>I", mc.insertVisual, desc("Multicursor create a cursor for each line of the visual selection, and enter insert mode"))
+
+        -- Operator
+        set("n", "ga", mc.addCursorOperator, desc("Multicursor add cursor with operator"))
+
+        -- Restore cursors
         set("n", "<leader>gv", mc.restoreCursors, desc("Multicursor restore multiple cursors"))
-
-        -- Add a cursor for all matches of cursor word/selection in the document.
-        set({"n", "x"}, "<leader>A", mc.matchAllAddCursors, desc("Multicursor add multiple cursors for all word/selection"))
-
-        -- Add a cursor to every search result in the buffer.
-        set("n", "<leader>san", function() mc.searchAddCursor(1) end, desc("Multicursor add cursor and jump to next search result"))
-        set("n", "<leader>sac", mc.searchAllAddCursors, desc("Multicursor add cursor for all search result"))
 
         -- Mappings defined in a keymap layer only apply when there are
         -- multiple cursors. This lets you have overlapping mappings.
         mc.addKeymapLayer(function(layer_set)
+
+            -- Clear cursors
+            layer_set({"n", "x"}, "<C-q>", mc.clearCursors, desc("Multicursor clear cursors"))
+            layer_set({"n", "x"}, "<M-q>", mc.clearCursors, desc("Multicursor clear cursors"))
+            layer_set("n", "<Esc>", mc.clearCursors, desc("Multicursor clear cursors"))
+
+            -- Skip line
+            layer_set("n", "<Up>", function() mc.lineSkipCursor(-1, { skipEmpty = false }) end, desc("Multicursor skip line above"))
+            layer_set("n", "<Down>", function() mc.lineSkipCursor(1, { skipEmpty = false }) end, desc("Multicursor skip line below"))
+
+            -- Skip match
+            layer_set("x", "<Up>", function() mc.matchSkipCursor(-1) end, desc("Multicursor skip and go to previous match"))
+            layer_set("x", "<Down>", function() mc.matchSkipCursor(1) end, desc("Multicursor skip and go to next match"))
+
+            -- Toggle cursors
+            layer_set("n", "z", mc.toggleCursor, desc("Multicursor toggle current cursor"))
+            layer_set("n", "<C-t>", toggle_cursors, desc("Multicursor toggle cursors"))
+
+            -- Search
+            layer_set("n", "<C-m>", function() mc.searchAddCursor(-1) end, desc("Multicursor add cursor and jump to previous search result"))
+            layer_set("n", "<C-n>", function() mc.searchAddCursor(1) end, desc("Multicursor add cursor and jump to next search result"))
+            layer_set("n", "N", function() mc.searchSkipCursor(-1) end, desc("Multicursor jump to the previous result without adding a cursor"))
+            layer_set("n", "n", function() mc.searchSkipCursor(1) end, desc("Multicursor jump to the next result without adding a cursor"))
+
+            -- Match
+            layer_set("x", "<C-e>", function() mc.matchAddCursor(-1) end, desc("Multicursor add cursor for match and go to previous"))
+            layer_set("x", "<C-d>", function() mc.matchAddCursor(1) end, desc("Multicursor add cursor for match and go to next"))
 
             -- Add and remove cursors with control + left click.
             layer_set("n", "<C-LeftMouse>", mc.handleMouse, desc("Multicursor multicursor handle left mouse"))
@@ -81,9 +103,6 @@ return {
 
             -- Delete the main cursor.
             layer_set({"n", "x"}, "<leader>x", mc.deleteCursor, desc("Multicursor delete multicursor"))
-
-            -- Enable and clear cursors using escape.
-            layer_set({"n", "x"}, "<M-q>", enable_clear_cursors, desc("Multicursor clear multicursors"))
 
             -- Align cursor columns.
             layer_set("n", "<leader>ac", mc.alignCursors, desc("Multicursor align by multicursor"))
