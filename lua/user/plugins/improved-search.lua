@@ -3,7 +3,7 @@ local desc = require('user.utils').desc
 return {
 	"wcs7777/improved-search.nvim",
 	opts = {
-		hlsearch = false,
+		hlsearch_follow = true,
 	},
 	config = function(_, opts)
 		local search = require("improved-search")
