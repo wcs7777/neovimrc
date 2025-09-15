@@ -1,25 +1,29 @@
 return {
-    "https://git.sr.ht/~nedia/auto-save.nvim",
-    event = { "BufReadPre" },
+    'wcs7777/auto-save.nvim',
+    event = { 'BufReadPre' },
     opts = {
-        events = { 'InsertLeave', 'TextChanged' },
-        silent = true,
+        events = { 'InsertLeave', 'TextChanged', 'BufEnter' },
+        silent = false,
         save_fn = nil,
-        timeout = 500,
+        timeout = 3000,
         exclude_ft = { 'neo-tree' },
     },
     config = function(_, opts)
         local autosave = require('auto-save')
-        opts.save_fn = function()
-            if vim.fn.mode() == 'i' then
+        ---@param bufnr integer
+        opts.save_fn = function(bufnr)
+            if (
+                bufnr ~= vim.api.nvim_get_current_buf() or
+                not vim.api.nvim_get_option_value('modified', { buf = bufnr }) or
+                vim.fn.mode() == 'i'
+            ) then
                 return
             end
-            if opts.save_cmd ~= nil then
-                vim.cmd(opts.save_cmd)
-            elseif opts.silent then
-                vim.cmd('silent! write')
+            local save_cmd = opts.save_cmd or 'write'
+            if opts.silent then
+                vim.cmd('silent! ' .. save_cmd)
             else
-                vim.cmd('write')
+                vim.cmd(save_cmd)
             end
         end
         autosave.setup(opts)
