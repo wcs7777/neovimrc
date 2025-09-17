@@ -1,6 +1,6 @@
 local servers = {
     ['lua_ls'] = require('user.lsp.servers.lua_ls'),
-    ['basedpyright'] = {},
+    ['basedpyright'] = require('user.lsp.servers.basedpyright'),
     ['clangd'] = {},
     ['css_variables'] = {},
     ['cssls'] = {},
