@@ -28,7 +28,7 @@ Hydra({
 		},
 	},
 	mode = {'n', 'x'},
-	body = '<leader>ho',
+	body = '<leader>yo',
 	heads = {
 		{ 'n', function()
 			if vim.o.number == true then
