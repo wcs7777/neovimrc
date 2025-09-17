@@ -9,7 +9,7 @@ return {
     },
     build = { ":MasonUpdate" },
     config = function()
-        require('user.lsp.keymaps')
+        require('user.lsp.on_attach')
         require('user.lsp.diagnostic')
         require('user.lsp.servers_settings')
     end,
