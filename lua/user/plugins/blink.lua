@@ -16,6 +16,7 @@ return {
         keymap = {
             preset = 'default',
             ['<Tab>'] = { 'select_and_accept', 'fallback' },
+            ['<Enter>'] = { 'select_and_accept', 'fallback' },
             ['<M-l>'] = { function(cmp) cmp.show({ providers = { 'lsp' } }) end },
             ['<M-s>'] = { function(cmp) cmp.show({ providers = { 'snippets' } }) end },
             ['<M-t>'] = { function(cmp) cmp.show({ providers = { 'path' } }) end },
