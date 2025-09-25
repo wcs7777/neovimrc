@@ -144,8 +144,8 @@ vim.keymap.set('n', '<C-Right>', cmd('vertical resize +1'), desc('Window width +
 vim.keymap.set('n', '<C-w><Up>', cmd('resize -1'), desc('Window height -1'))
 vim.keymap.set('n', '<C-w><Down>', cmd('resize +1'), desc('Window height +1'))
 vim.keymap.set('n', '<leader>bo', delete_other_buffers, desc('Close all buffers but current'))
-vim.keymap.set('n', '<leader>smh', '<C-w>t<C-w>H', desc('Make horizontal split vertical'))
-vim.keymap.set('n', '<leader>smv', '<C-w>t<C-w>K', desc('Make vertical split horizontal'))
+vim.keymap.set('n', '<leader>wsv', '<C-w>t<C-w>H', desc('Make horizontal split vertical'))
+vim.keymap.set('n', '<leader>wsh', '<C-w>t<C-w>K', desc('Make vertical split horizontal'))
 
 -- _Cursor_movement
 vim.keymap.set('n', '<C-d>', '<C-d>zz', desc('Move forward 1/2 a screen and center line'))
