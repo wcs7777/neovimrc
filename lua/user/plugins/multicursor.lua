@@ -41,16 +41,16 @@ return {
         set("n", "<C-Down>", lineAddCursor(1), desc("Multicursor add cursor below"))
 
         -- Search add cursor
-        set("n", "<leader>S", function() mc.searchAddCursor(1) end, desc("Multicursor add cursor and jump to next search result"))
+        set("n", "<leader>N", function() mc.searchAddCursor(1) end, desc("Multicursor add cursor and jump to next search result"))
 
         -- Search add all
-        set("n", "<leader>N", mc.searchAllAddCursors, desc("Multicursor add cursor for all search results"))
+        set("n", "<leader>S", mc.searchAllAddCursors, desc("Multicursor add cursor for all search results"))
 
         -- Match add cursor
         set("x", "<leader>D", function() mc.matchAddCursor(1) end, desc("Multicursor add cursor for match and go to next"))
 
         -- Match add all
-        set("x", "<leader>N", mc.matchAllAddCursors, desc("Multicursor add cursor for all match selection"))
+        set("x", "<leader>S", mc.matchAllAddCursors, desc("Multicursor add cursor for all match selection"))
 
         -- Insert selection
         set("x", "<leader>I", mc.insertVisual, desc("Multicursor create a cursor for each line of the visual selection, and enter insert mode"))
