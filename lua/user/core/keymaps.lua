@@ -109,7 +109,7 @@ local function diff_this()
 end
 
 local function diff_off()
-    vim.cmd('windo diffoff')
+    vim.cmd('diffoff!')
     local path = vim.fn.expand('%')
     notify('diff off: ' .. path)
 end
