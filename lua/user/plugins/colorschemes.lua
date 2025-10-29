@@ -8,6 +8,7 @@ return {
         priority = 1000,
         opts = {
             style = 'light',
+            preset = {},
             hide_eob = true,
             colors = {
                 white  = '#FCFBF6',
