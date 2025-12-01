@@ -52,7 +52,7 @@ return {
 		hl_group = highlight_name,
 		-- hl_group = 'Search',
 		chars_lower_limit = 2,
-		lines_upper_limit = 3,
+		lines_upper_limit = 30,
 		-- By default, visimatch will highlight text even if it doesn't have exactly
 		-- the same spacing as the selected region. You can set this to `true` if
 		-- you're not a fan of this behaviour :)
