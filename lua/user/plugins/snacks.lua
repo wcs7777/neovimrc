@@ -1,3 +1,12 @@
+local function grep_word_strictly()
+    Snacks.picker.grep_word({
+        regex = true,
+        search = function(picker)
+            return "\\b" .. picker:word() .. "\\b"
+        end
+    })
+end
+
 return {
     "folke/snacks.nvim",
     priority = 1000,
@@ -38,6 +47,9 @@ return {
         { "<leader>pq", function() Snacks.picker.qflist() end, desc = "Quickfix list" },
         { "<leader>si", function() Snacks.picker.grep() end, desc = "Grep" },
         { "<leader>sg", function() Snacks.picker.grep_word({ search = vim.fn.input("Grep > ") }) end, desc = "Grep search" },
+        { "<leader>sg", function() Snacks.picker.grep_word({ search = vim.fn.input("Grep > ") }) end, desc = "Grep search" },
+        { "<leader>ss", grep_word_strictly, desc = "Grep search word strictly", mode = { "n", "x" } },
+        { "\\", grep_word_strictly, desc = "Grep search word strictly", mode = { "n", "x" } },
         { "<leader>sv", function() Snacks.picker.grep_word() end, desc = "Visual selection or word", mode = { "n", "x" } },
         { "<leader>cR", function() Snacks.rename.rename_file() end, desc = "Rename file" },
         { "[[", function() Snacks.picker.grep_word() end, desc = "Next reference", mode = { "n", "x" } },
