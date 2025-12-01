@@ -161,6 +161,7 @@ vim.keymap.set('n', 'N', 'Nzzzv', desc('Go to previous search result and center 
 vim.keymap.set('n', '<leader>cs', cmd('echo ""'), desc('Clear status bar'))
 vim.keymap.set('n', '<leader>fc', print_copy_cur_file, desc('Copy and print current file path'))
 vim.keymap.set('n', '<leader>fp', cmd('echo expand("%:~")'), desc('Print current file path'))
+vim.keymap.set('n', '<leader>ff', cmd('echo expand("%:p")'), desc('Print current file full path'))
 vim.keymap.set('n', '<leader>lv', list_lines_exceeds, desc('List lines exceeding N characters'))
 vim.keymap.set('n', '<leader>qo', cmd('copen'), desc('Quickfix open'))
 vim.keymap.set('n', '<leader>qc', cmd('cclose'), desc('Quickfix close'))
