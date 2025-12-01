@@ -17,6 +17,8 @@ return {
             preset = 'default',
             ['<Tab>'] = { 'select_and_accept', 'fallback' },
             ['<Enter>'] = { 'select_and_accept', 'fallback' },
+            ['<Right>'] = { 'snippet_forward', 'fallback' },
+            ['<Left>'] = { 'snippet_backward', 'fallback' },
             ['<M-l>'] = { function(cmp) cmp.show({ providers = { 'lsp' } }) end },
             ['<M-s>'] = { function(cmp) cmp.show({ providers = { 'snippets' } }) end },
             ['<M-t>'] = { function(cmp) cmp.show({ providers = { 'path' } }) end },
