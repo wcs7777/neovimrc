@@ -47,7 +47,7 @@ return {
         { "<leader>pq", function() Snacks.picker.qflist() end, desc = "Quickfix list" },
         { "<leader>si", function() Snacks.picker.grep() end, desc = "Grep" },
         { "<leader>sg", function() Snacks.picker.grep_word({ search = vim.fn.input("Grep > ") }) end, desc = "Grep search" },
-        { "<leader>sg", function() Snacks.picker.grep_word({ search = vim.fn.input("Grep > ") }) end, desc = "Grep search" },
+        { "<leader>sr", function() Snacks.picker.grep_word({ regex = true, search = vim.fn.input("Regex Grep > ") }) end, desc = "Grep search" },
         { "<leader>ss", grep_word_strictly, desc = "Grep search word strictly", mode = { "n", "x" } },
         { "\\", grep_word_strictly, desc = "Grep search word strictly", mode = { "n", "x" } },
         { "<leader>sv", function() Snacks.picker.grep_word() end, desc = "Visual selection or word", mode = { "n", "x" } },
