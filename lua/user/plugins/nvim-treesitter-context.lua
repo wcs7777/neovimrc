@@ -11,6 +11,7 @@ return {
 		local treesitter_context = require('treesitter-context')
 		treesitter_context.setup(opts)
 		vim.keymap.set("n", "[x", function() treesitter_context.go_to_context(vim.v.count1) end, desc("Jump to context upwards"))
-		vim.keymap.set("n", "<leader>tx", cmd("TSContext toggle"), desc("Toggle treesitter-context"))
+		vim.keymap.set("n", "<leader>tx", treesitter_context.toggle, desc("Toggle treesitter-context"))
+		treesitter_context.disable()
 	end,
 }
