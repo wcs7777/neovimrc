@@ -26,9 +26,10 @@ local function stronger_highlight(highlight)
 	local hl_bg_g = tonumber(hl_bg:sub(6, 7), 16)
 	local hl_bg_brightness = (0.299 * hl_bg_r) + (0.587 * hl_bg_g) + (0.114 * hl_bg_b)
 	local bg_factor = hl_bg_brightness > 186 and 1.1 or 0.9
+	local fg = hl.fg and hl.fg or vim.api.nvim_get_hl(0, { name = 'Normal' }).fg
 	return {
 		bg = adjust_color(hl_bg, bg_factor),
-		fg = string.format('#%06x', hl.fg),
+		fg = string.format('#%06x', fg),
 	}
 end
 
