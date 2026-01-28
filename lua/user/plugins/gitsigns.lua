@@ -33,6 +33,12 @@ return {
                 end
             end, desc('Previous chunk'))
 
+            vim.keymap.set('n', '<leader>gb', function()
+                vim.cmd('topleft vsplit')
+                gitsigns.show()
+                vim.api.nvim_set_option_value('modifiable', false, { buf = 0 })
+            end, desc('Git show base'))
+
             -- Actions
             vim.keymap.set('n', '<leader>gh', gitsigns.stage_hunk, desc('Git stage hunk'))
             vim.keymap.set('v', '<leader>gh', function() gitsigns.stage_hunk({ vim.fn.line('.'), vim.fn.line('v') }) end, desc('Git stage hunk'))
