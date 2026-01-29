@@ -6,8 +6,6 @@
 -- _Toggle_option
 -- _Text
 
-local utils = require('user.utils')
-local notify = utils.notify
 local vert_column = '80'
 
 local desc = require('user.utils').desc
@@ -110,13 +108,13 @@ end
 local function diff_this()
     vim.cmd('diffthis')
     local path = vim.fn.expand('%')
-    notify('diff this: ' .. path)
+    vim.notify('diff this: ' .. path)
 end
 
 local function diff_off()
     vim.cmd('diffoff!')
     local path = vim.fn.expand('%')
-    notify('diff off: ' .. path)
+    vim.notify('diff off: ' .. path)
 end
 
 local function list_lines_exceeds()

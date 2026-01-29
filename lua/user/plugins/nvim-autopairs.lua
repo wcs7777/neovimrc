@@ -1,6 +1,3 @@
-local utils = require('user.utils')
-local notify = utils.notify
-
 local desc = require('user.utils').desc
 
 return {
@@ -20,7 +17,7 @@ return {
                 ap.disable()
                 state = "disabled"
             end
-            notify("autopairs " .. state)
+            vim.notify("autopairs " .. state)
         end
         vim.keymap.set('n', '<leader>tp', toggle, desc('Toggle auto pairs'))
     end,

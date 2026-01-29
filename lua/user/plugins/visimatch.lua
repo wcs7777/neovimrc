@@ -1,4 +1,3 @@
-local notify = require('user.utils').notify
 local highlight_name = 'MyVisimatchHighlight'
 
 local desc = require('user.utils').desc
@@ -82,10 +81,10 @@ return {
 		local function toggle()
 			if current == enabled then
 				current = disabled
-				notify('visimatch ' .. 'disabled')
+				vim.notify('visimatch ' .. 'disabled')
 			else
 				current = enabled
-				notify('visimatch ' .. 'enabled')
+				vim.notify('visimatch ' .. 'enabled')
 			end
 			opts.buffers = current
 			visimatch.setup(opts)
