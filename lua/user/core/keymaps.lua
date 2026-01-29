@@ -21,15 +21,20 @@ end
 local function toggle_opt(option, value1, value2)
     return function()
         local current = vim.opt[option]:get()
+        local opt_desc = ''
         if value1 ~= nil then
             if type(value1) == 'string' then
                 vim.opt[option] = current == value1 and value2 or value1
+                opt_desc = vim.opt[option]:get()
             else
                 vim.opt[option] = vim.deep_equal(current, value1) and value2 or value1
+                opt_desc = vim.inspect(vim.opt[option]:get())
             end
         else
             vim.opt[option] = not current
+            opt_desc = vim.opt[option]:get() and 'enabled' or 'disabled'
         end
+        vim.notify(option .. ' ' .. opt_desc)
     end
 end
 
