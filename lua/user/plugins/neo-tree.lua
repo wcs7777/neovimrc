@@ -116,5 +116,15 @@ return {
         require("neo-tree").setup(opts)
         vim.keymap.set('n', '-', cmd('Neotree toggle reveal left'), desc('Neotree toggle'))
         vim.keymap.set('n', '<C-_>', cmd('Neotree focus reveal left'), desc('Neotree focus'))
+        local hl_names = {
+            'NeoTreeGitUntracked',
+            'NeoTreeRootName',
+        }
+        for _, name in ipairs(hl_names) do
+            local hl = vim.api.nvim_get_hl(0, { name = name } )
+            if hl.italic then
+                vim.api.nvim_set_hl(0, name, vim.tbl_extend('force', hl, { italic = false }))
+            end
+        end
     end,
 }
