@@ -1,43 +1,73 @@
-local transparent = false
+local newpaper_palette = require('user.utils.palettes.newpaper')
+
+local disable_italics = {
+    'nightfox',
+}
 local terminal_theme = 'light'
 local current_colorscheme = 'newpaper'
+vim.opt.background = terminal_theme
 
 local colorschemes = {
     {
         'yorik1984/newpaper.nvim',
         name = 'newpaper',
         opts = {
-            style = terminal_theme,
-            preset = {},
-            hide_eob = true,
-            colors = {
-                white  = '#FCFBF6',
-                bg     = '#FCFBF6',
-                silver = '#F0EFEA',
-            },
-            colors_advanced = {
-                active        = '#F0EFEA',
-                cursor_nr_bg  = '#F7F6F1',
-                linenumber_bg = '#F7F6F1',
-                git_sign_bg   = '#F7F6F1',
-            },
+            style               = 'light',
             italic_strings      = false,
             italic_comments     = false,
             italic_doc_comments = false,
             italic_functions    = false,
             italic_variables    = false,
+            hide_eob            = true,
+            lightness           = 0, -- -1(all colors '#000000') to 1(all colors '#FFFFFF').
+            saturation          = 0, -- from -1 to 1. Recommended value: -0.2 - 0.2
+            greyscale           = false, -- 'lightness', 'average', 'luminosity', false
+            colors              = newpaper_palette.custom,
+            colors_advanced     = newpaper_palette.custom_advanced,
+            custom_highlights   = newpaper_palette.custom_highlights,
         },
-        setup = function(opts)
-            require('newpaper').setup(opts)
-            vim.opt.background = opts.style
-        end,
     },
     {
-        'navarasu/onedark.nvim',
-        name = 'onedark',
+        'vague-theme/vague.nvim',
+        name = 'vague',
         opts = {
+            transparent = false,
+            bold = true,
+            italic = false,
         },
-        enable = function() require('onedark').load() end,
+    },
+    {
+        'thesimonho/kanagawa-paper.nvim',
+        name = 'kanagawa-paper',
+        opts = {
+            styles = {
+                comment = { italic = false },
+                functions = { italic = false },
+                keyword = { italic = false },
+                statement = { italic = false },
+                type = { italic = false },
+            },
+        },
+    },
+    {
+        'EdenEast/nightfox.nvim',
+        name = 'nightfox',
+        variants = {
+            'nightfox',
+            'dayfox',
+            'dawnfox',
+            'dushfox',
+            'nordfox',
+            'terafox',
+            'carbonfox',
+        },
+    },
+    {
+        'catppuccin/nvim',
+        name = 'catppuccin',
+        opts = {
+            no_italic = true,
+        }
     },
     {
         'rose-pine/neovim',
@@ -47,18 +77,12 @@ local colorschemes = {
                 italic = false,
             },
         },
-    },
-    {
-        'catppuccin/nvim',
-        name = 'catppuccin',
-        opts = {
-            no_italics = true,
-        },
-    },
+    }
 }
 
 local lazy_colorschemes = {}
 local name2setup = {}
+local name2variants = {}
 
 for _, cs in ipairs(colorschemes) do
     local setup = (function(name, setup, opts)
@@ -70,19 +94,23 @@ for _, cs in ipairs(colorschemes) do
             end
         end
     end)(cs.name, cs.setup, cs.opts or {})
-    local enable = (function(enable)
+    local is_current = (
+        current_colorscheme:sub(1, #cs.name) == cs.name or
+        cs.variants and vim.tbl_contains(cs.variants, current_colorscheme)
+    )
+    local enable = (function(enable_fn, name)
         return function()
-            if enable then
-                enable()
+            if enable_fn then
+                enable_fn()
             else
-                vim.cmd('colorscheme ' .. cs.name)
+                vim.cmd('colorscheme ' .. name)
             end
         end
-    end)(cs.enable)
-    local is_current = current_colorscheme:sub(1, #cs.name) == cs.name
+    end)(cs.enable, is_current and current_colorscheme or cs.name)
     table.insert(lazy_colorschemes, {
         cs[1],
         name = cs.name,
+        dependencies = cs.dependencies and cs.dependencies or {},
         lazy = not is_current,
         priority = is_current and 1000 or 50,
         opts = cs.opts or {},
@@ -92,16 +120,22 @@ for _, cs in ipairs(colorschemes) do
         end,
     })
     name2setup[cs.name] = setup
+    name2variants[cs.name] = cs.variants and cs.variants or {}
 end
 
 vim.api.nvim_create_autocmd('ColorScheme', {
     group = vim.api.nvim_create_augroup('user-colorscheme', { clear = true }),
     pattern = '*',
     callback = function(args)
-        local setup = name2setup[args.match]
+        local name = args.match
+        local setup = name2setup[name]
         if setup == nil then
             for key, value in pairs(name2setup) do
-                if args.match:sub(1, #key) == key then
+                if (
+                    name:sub(1, #key) == key or
+                    vim.tbl_contains(name2variants[key], name)
+                ) then
+                    name = key
                     setup = value
                     break
                 end
@@ -110,40 +144,19 @@ vim.api.nvim_create_autocmd('ColorScheme', {
         if setup ~= nil then
             setup()
         end
-        if transparent and vim.opt.background:get() == terminal_theme then
-            local groups = {
-                'Comment',
-                'Conditional',
-                'Constant',
-                'CursorLine',
-                'CursorLineNr',
-                'EndOfBuffer',
-                'Function',
-                'Identifier',
-                'LineNr',
-                'NonText',
-                'Normal',
-                'NormalNC',
-                'Operator',
-                'PreProc',
-                'Repeat',
-                'SignColumn',
-                'Special',
-                'Statement',
-                'StatusLine',
-                'StatusLineNC',
-                'String',
-                'Structure',
-                'Todo',
-                'Type',
-                'Underlined',
-            }
-            for _, name in ipairs(groups) do
-                local hl = vim.api.nvim_get_hl(0, { name = name })
-                if next(hl) ~= nil then
-                    local new_hl = vim.tbl_extend('force', hl, { bg = 'none', ctermbg = 'none' })
-                    new_hl[true] = nil
-                    vim.api.nvim_set_hl(0, name, new_hl)
+        require('nvim-web-devicons').refresh()
+        require('lualine').refresh()
+        if (
+            (
+                type(disable_italics) == 'table' and
+                vim.tbl_contains(disable_italics, name)
+            ) or
+            disable_italics
+        ) then
+            local hl_groups = vim.api.nvim_get_hl(0, {})
+            for hl_name, hl in pairs(hl_groups) do
+                if hl.italic then
+                    vim.api.nvim_set_hl(0, hl_name, vim.tbl_extend('force', hl, { italic = false }))
                 end
             end
         end

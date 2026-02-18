@@ -1,0 +1,208 @@
+	-- black dark
+	black                = '#2F2A3D', -- color00
+	fg                   = '#2F2A3D', -- color15
+	git_fg               = '#413932',
+	task_fg              = '#2F2A3D',
+	text_fg              = '#404040',
+
+	-- brown dark
+	dark_maroon          = '#8C1919',
+	github_removed       = '#6B1F1F',
+	maroon               = '#AF0000', -- color01
+	regexp_brown         = '#884400',
+	ruby_maroon          = '#880000',
+	tex_ch_brown         = '#8C1919',
+	tex_maroon           = '#A2251A',
+
+	-- green dark
+	bluegreen            = '#1B7F82',
+	darkcyan             = '#008B8B',
+	darkengreen          = '#007200',
+	darkgreen            = '#008700', -- color02
+	git_added            = '#28A745',
+	github_added         = '#1A4D1A',
+	green                = '#50A14F', -- color10
+	hint_fg              = '#0EA674',
+	neovim_green         = '#54A23D',
+	nephritis            = '#00AB66',
+	ocean                = '#2E8B57',
+	ok_fg                = '#0EA628',
+	olive                = '#5F8700',
+	regexp_green         = '#00AA00',
+	teal                 = '#005F87', -- color06
+	tex_SI_green         = '#589927',
+	tex_ch_green         = '#19A665',
+	tex_lightgreen       = '#20A93E',
+	tex_math             = '#008000',
+	tex_math_cmd         = '#636D1D',
+	tex_math_delim       = '#349279',
+	tex_part_title       = '#5F8A00',
+	tex_tikz_green       = '#568355',
+	tex_tikz_verb        = '#535362',
+	tex_verb             = '#4E5B5F',
+	todo_hint            = '#199319',
+
+	-- green light
+	diffadd              = '#DAFBE1',
+	diffadd_accent       = '#ACEEBB',
+	hint_bg              = '#E7F8F2',
+	ok_bg                = '#E6F6E9',
+	rainbowgreen         = '#28CE00',
+	regexp_green_bg      = '#E1F0E1',
+	rust_green           = '#0B7261',
+	spelllocal           = '#E3FFD5',
+	tex_math_error       = '#CCE5CC',
+	tex_olive            = '#89802B',
+	tex_only_math_error  = '#EAE8D5',
+
+	-- orange dark
+	darkorange           = '#AF5F00', -- color03
+	orange               = '#D75F00', -- color11
+	ruby_orange          = '#BF5019',
+	tex_SI_orange        = '#D55C1F',
+	tex_darkorange       = '#BA6400',
+	todo_warn            = '#D75F00',
+
+	-- orange light
+	lightorange          = '#E4C07A',
+	persimona            = '#EF7932',
+	rainboworange        = '#FF6A00',
+	regexp_orange        = '#DD7700',
+	regexp_orange_bg     = '#F0F0C8',
+	tex_ch_orange        = '#E5740B',
+	tex_orange           = '#D37300',
+	tex_redorange        = '#F3752D',
+	tex_tikz_orange      = '#AB915E',
+	warn_bg              = '#FDF5EC',
+	warn_fg              = '#D37300',
+
+	-- blue dark
+	blue                 = '#0087AF', -- color14
+	git_merged           = '#00909A',
+	info_fg              = '#005FAF',
+	lightblue            = '#0072C1', -- color12
+	lua_blue             = '#128897',
+	lua_navy             = '#030380',
+	navy                 = '#27408B', -- color04
+	python_blue          = '#336D9E',
+	rainbowblue          = '#0041FF',
+	ruby_navy            = '#09529B',
+	tag_navy             = '#0044AA',
+	tex_SI_navy          = '#0B5394',
+	tex_blue             = '#0089B3',
+	tex_ch_blue          = '#394892',
+	tex_navy             = '#1E40C2',
+	tex_operator         = '#09529B',
+	tex_quotes           = '#003399',
+	tex_string           = '#007FD7',
+	tex_teal             = '#005579',
+	tex_tikz_navy        = '#4654C0',
+	todo_info            = '#3A72ED',
+
+	-- blue light
+	aqua                 = '#BFD5EC',
+	aquadark             = '#AFD7FF',
+	info_bg              = '#EBF0FD',
+	regexp_blue          = '#5588FF',
+	spellcap             = '#E7E7FF',
+	tex_aqua             = '#14B9C4',
+	tex_group_error      = '#EBF2FF',
+	text_visual          = '#C2E8FF',
+
+	-- violet dark
+	darkpurple           = '#5823C7',
+	purple               = '#8700AF', -- color05
+	rainbowviolet        = '#7D00E5',
+	ruby_purple          = '#6838CC',
+	tex_SI_purple        = '#523891',
+	tex_keyword          = '#7F2DC2',
+	tex_lightpurple      = '#684D99',
+	tex_tikz_purple      = '#635F8C',
+	todo_default         = '#894DEE',
+	todo_test            = '#B748B7',
+
+	-- violet light
+	blueviolet           = '#AF87D7',
+	lightviolet          = '#E5D9F2',
+	tex_lightviolet      = '#B777B7',
+	violet               = '#957CC6',
+
+	-- gray dark
+	darkgrey             = '#444444', -- color08
+	grey                 = '#585858',
+
+	-- gray light
+	aqualight            = '#DFE4EB',
+	codeblock            = '#DEDEDE',
+	disabled             = '#C3C3C3',
+	git_bg               = '#EBEAE2',
+	git_untracked        = '#8F8F8B',
+	lightgrey            = '#878787',
+	lightlightgrey       = '#D4D4D4',
+	lightsilver          = '#EEEEEE',
+	match                = '#E4E4E4',
+	silver               = '#E4E4E4',
+
+	-- red dark
+	git_removed          = '#D73A49',
+	jinja_red            = '#B80000',
+	rainbowred           = '#FF0000',
+	red                  = '#E14133', -- color09
+	redorange            = '#E12D23',
+	tex_SI_red           = '#D83851',
+	tex_ch_red           = '#E04A4A',
+	tex_red              = '#D84342',
+	todo_error           = '#DF0000',
+
+	-- red light
+	error_fg             = '#D75F66',
+
+	-- pink dark
+	magenta              = '#D7005F',
+	rainbowcyan          = '#E500E5',
+	regexp_magenta       = '#CC00CC',
+	ruby_magenta         = '#A626A4',
+	tex_magenta          = '#E00050',
+
+	-- pink light
+	diffdelete           = '#FFEBE9',
+	diffdelete_accent    = '#FFCECB',
+	lightmagenta         = '#E563BA', -- color13
+	lsp_error_bg         = '#FDF0F0',
+	magenta_bg           = '#FFBBFF',
+	pink                 = '#FFEEFF',
+	spellbad             = '#FFF4FF',
+	tex_SI_magenta       = '#BC5AA2',
+	tex_math_delim_error = '#FBE5CC',
+	tex_parbox_opt_error = '#F0D4D1',
+	tex_pink             = '#D75F66',
+
+	-- yellow light
+	darkyellow           = '#C18301',
+	diffchange           = '#FFE7B7',
+	difftext             = '#FFFFD7',
+	git_modified         = '#DBAB09',
+	rainbowyellow        = '#FDA135',
+	spellrare            = '#FFFFDF',
+	task_bg              = '#F3EEC3',
+	task_cursor          = '#F2E3A2',
+	task_visual          = '#D9CC91',
+	tex_SI_yellow        = '#C88900',
+	yellow               = '#FFFF66',
+
+	bg                   = '#F1F3F2', -- color07
+	text_bg              = '#F4F4F2',
+	text_cursor          = '#E4E4E4',
+	white                = '#F1F3F2',
+
+
+
+
+import #e12d23
+import React #2072af
+, #ef7932
+{ #09529b
+const #8700af
+string #0072c1
+${ #e563ba
+paramters #e86100

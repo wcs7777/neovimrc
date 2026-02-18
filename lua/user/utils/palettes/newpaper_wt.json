@@ -1,0 +1,46 @@
+        {
+            "background": "#FDFAF7",
+            "black": "#010B13",
+            "blue": "#27408B",
+            "brightBlack": "#414D57",
+            "brightBlue": "#0072C1",
+            "brightCyan": "#0087AF",
+            "brightGreen": "#007FFF",
+            "brightPurple": "#E563BA",
+            "brightRed": "#E14133",
+            "brightWhite": "#585858",
+            "brightYellow": "#D75F00",
+            "cursorColor": "#ABC2FF",
+            "cyan": "#005F87",
+            "foreground": "#010B13",
+            "green": "#0E5AA6",
+            "name": "Neopaper",
+            "purple": "#8700AF",
+            "red": "#AF0000",
+            "selectionBackground": "#0087AF",
+            "white": "#878787",
+            "yellow": "#AF5F00"
+        },
+        {
+            "name": "Neopaper",
+            "tab":
+            {
+                "background": "#FAF2EBFF",
+                "iconStyle": "default",
+                "showCloseButton": "always",
+                "unfocusedBackground": null
+            },
+            "tabRow":
+            {
+                "background": "#FDFAF7FF",
+                "unfocusedBackground": "#F7EBDEFF"
+            },
+            "window":
+            {
+                "applicationTheme": "light",
+                "experimental.rainbowFrame": false,
+                "frame": null,
+                "unfocusedFrame": null,
+                "useMica": false
+            }
+        }
