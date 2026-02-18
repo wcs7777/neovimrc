@@ -1,7 +1,18 @@
+-- local vertical_bar = '┃'
+local vertical_bar = '│'
+
 return {
     "lewis6991/gitsigns.nvim",
     event = "VeryLazy",
     opts = {
+        signs = {
+            add          = { text = vertical_bar },
+            change       = { text = vertical_bar },
+        },
+        signs_staged = {
+            add          = { text = vertical_bar },
+            change       = { text = vertical_bar },
+        },
         attach_to_untracked = true,
         on_attach = function(bufnr)
 
