@@ -45,6 +45,7 @@ return {
         { "<leader>pkc", function() Snacks.picker.keymaps({ modes = { "c" } }) end, desc = "Keymaps command" },
         { "<leader>pe", function() Snacks.picker.resume() end, desc = "Resume" },
         { "<leader>pq", function() Snacks.picker.qflist() end, desc = "Quickfix list" },
+        { "<leader>pc", function() Snacks.picker.colorschemes() end, desc = "Colorschemes" },
         { "<leader>si", function() Snacks.picker.grep() end, desc = "Grep" },
         { "<leader>sg", function() Snacks.picker.grep_word({ search = vim.fn.input("Grep > ") }) end, desc = "Grep search" },
         { "<leader>sr", function() Snacks.picker.grep_word({ regex = true, search = vim.fn.input("Regex Grep > ") }) end, desc = "Grep search" },
@@ -62,6 +63,7 @@ return {
         { "<leader>plf", function() Snacks.picker.lsp_symbols({ filter = { default = { 'Function', 'Method'} } }) end, desc = "LSP Symbols Functions" },
         { "<leader>plw", function() Snacks.picker.lsp_workspace_symbols() end, desc = "LSP Workspace Symbols" },
         { "<leader>plc", function() Snacks.picker.lsp_config() end, desc = "LSP Config" },
+        { "<leader>cn", function() Snacks.notifier.hide() end, desc = "Close notifications" },
     },
     init = function ()
         vim.api.nvim_create_autocmd("User", {
