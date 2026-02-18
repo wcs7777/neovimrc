@@ -8,7 +8,7 @@ local servers = {
     ['emmet_ls'] = {},
     ['html'] = {},
     ['ts_ls'] = {},
-    ['jdtls'] = {},
+    -- ['jdtls'] = {},
 }
 
 local capabilities = vim.tbl_deep_extend(
