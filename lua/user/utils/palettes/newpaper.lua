@@ -2,73 +2,11 @@ local coolors = require('user.utils.palettes.coolors')
 
 local M = {}
 
-local foregrounds = {
-	default      = '#2F2A3D',
-	carbon_black = '#1B1B1B',
-	coffee_bean  = '#1A1110',
-	ink_black    = '#010B13',
-	pitch_black  = '#100C08',
-	shadow_grey  = '#242124',
-}
-
-local backgrounds = {
-	pure = {
-		white       = '#FFFFFF',
-		silver      = '#f0f0f0',
-		lightsilver = '#f7f7f7',
-	},
-	default = {
-		white       = '#F1F3F2',
-		silver      = '#E4E4E4',
-		lightsilver = '#EEEEEE',
-	},
-	default_bluish = {
-		white       = '#f1f3f3',
-		silver      = '#e1e5e5',
-		lightsilver = '#e9ecec',
-	},
-	cream = {
-		white       = '#FCFBF7',
-		silver      = '#F0EFEA',
-		lightsilver = '#F7F6F1',
-	},
-	cream2 = {
-		white       = '#fbf9f4',
-		silver      = '#f4ebdd',
-		lightsilver = '#f7f2e8',
-	},
-	dmg = {
-		white       = '#dadbdc',
-		silver      = '#cacccd',
-		lightsilver = '#d2d3d5',
-	},
-	dmg_lighter = {
-		white       = '#f4f5f5',
-		silver      = '#e4e6e6',
-		lightsilver = '#eceeee',
-	},
-	iceberg = {
-		white       = '#e8e9ec',
-		silver      = '#d7d9de',
-		lightsilver = '#e0e1e5',
-	},
-	rose_pine_dawn = {
-		white       = '#faf4ed',
-		silver      = '#f3e5d5',
-		lightsilver = '#f7ede1',
-	},
-	rose_pine_dawn_lighter = {
-		white       = '#fdfaf7',
-		silver      = '#f7ebde',
-		lightsilver = '#faf2eb',
-	},
-}
-
-local bg = backgrounds.rose_pine_dawn_lighter
+local bg = coolors.backgrounds.dmg_lighter
 local white = bg.white
 local silver = bg.silver
 local lightsilver = bg.lightsilver
-local black = foregrounds.ink_black
+local black = coolors.foregrounds.ink_black
 
 M.custom = {
 
@@ -144,6 +82,7 @@ M.custom_highlights = {
 	['@string.json'] = { fg = coolors.dark.blue.azure_blue },
 	['@string.csv'] = { fg = coolors.dark.blue.navy_electric },
 	['@number.csv'] = { fg = coolors.dark.red.burgundy },
+	['@property.yaml'] = { link = '@variable.member' },
 }
 
 M.default = {

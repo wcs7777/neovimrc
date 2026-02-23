@@ -1,5 +1,5 @@
         {
-            "background": "#FDFAF7",
+            "background": "#f4f5f5",
             "black": "#010B13",
             "blue": "#27408B",
             "brightBlack": "#414D57",
@@ -25,15 +25,15 @@
             "name": "Neopaper",
             "tab":
             {
-                "background": "#FAF2EBFF",
+                "background": "#eceeeeFF",
                 "iconStyle": "default",
                 "showCloseButton": "always",
                 "unfocusedBackground": null
             },
             "tabRow":
             {
-                "background": "#FDFAF7FF",
-                "unfocusedBackground": "#F7EBDEFF"
+                "background": "#f4f5f5FF",
+                "unfocusedBackground": "#e4e6e6FF"
             },
             "window":
             {
