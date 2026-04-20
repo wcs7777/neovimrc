@@ -61,6 +61,11 @@ return {
         -- Restore cursors
         set("n", "<leader>gv", mc.restoreCursors, desc("Multicursor restore multiple cursors"))
 
+        -- Add and remove cursors with control + left click.
+        set("n", "<C-LeftMouse>", mc.handleMouse, desc("Multicursor multicursor handle left mouse"))
+        set("n", "<C-LeftDrag>", mc.handleMouseDrag, desc("Multicursor multicursor handle mouse drag"))
+        set("n", "<C-LeftRelease>", mc.handleMouseRelease, desc("Multicursor multicursor handle mouse release"))
+
         -- Mappings defined in a keymap layer only apply when there are
         -- multiple cursors. This lets you have overlapping mappings.
         mc.addKeymapLayer(function(layer_set)
@@ -91,11 +96,6 @@ return {
             -- Match
             layer_set("x", "<C-e>", function() mc.matchAddCursor(-1) end, desc("Multicursor add cursor for match and go to previous"))
             layer_set("x", "<C-d>", function() mc.matchAddCursor(1) end, desc("Multicursor add cursor for match and go to next"))
-
-            -- Add and remove cursors with control + left click.
-            layer_set("n", "<C-LeftMouse>", mc.handleMouse, desc("Multicursor multicursor handle left mouse"))
-            layer_set("n", "<C-LeftDrag>", mc.handleMouseDrag, desc("Multicursor multicursor handle mouse drag"))
-            layer_set("n", "<C-LeftRelease>", mc.handleMouseRelease, desc("Multicursor multicursor handle mouse release"))
 
             -- Select a different cursor as the main one.
             layer_set({"n", "x"}, "<Left>", mc.prevCursor, desc("Multicursor previous multicursor"))
