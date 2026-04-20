@@ -3,7 +3,7 @@ local desc = require('user.utils').desc
 return {
 	'nvim-treesitter/nvim-treesitter-context',
 	opts = {
-		max_lines = 0, -- How many lines the window should span. Values <= 0 mean no limit.
+		max_lines = 5, -- How many lines the window should span. Values <= 0 mean no limit.
 		mode = 'cursor',  -- Line used to calculate context. Choices: 'cursor', 'topline'
 	},
 	config = function(_, opts)
