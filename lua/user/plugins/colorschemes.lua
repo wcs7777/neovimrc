@@ -11,6 +11,7 @@ local colorschemes = {
     {
         'yorik1984/newpaper.nvim',
         name = 'newpaper',
+        commit = 'ee0e43f203511b1a8eb96f2f44723503defbb2cb',
         opts = {
             style               = 'light',
             italic_strings      = false,
@@ -110,6 +111,7 @@ for _, cs in ipairs(colorschemes) do
     table.insert(lazy_colorschemes, {
         cs[1],
         name = cs.name,
+        commit = cs.commit or nil,
         dependencies = cs.dependencies and cs.dependencies or {},
         lazy = not is_current,
         priority = is_current and 1000 or 50,
