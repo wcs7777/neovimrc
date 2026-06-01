@@ -35,7 +35,7 @@ return {
         { "<leader>pb", function() Snacks.picker.buffers() end, desc = "Find buffers" },
         { "<leader>pf", function() Snacks.picker.files() end, desc = "Find files" },
         { "<leader>pa", function() Snacks.picker.files({ hidden = true, ignored = true }) end, desc = "Find all files" },
-        { "<leader>pg", function() Snacks.picker.git_files() end, desc = "Find git files" },
+        { "<leader>pg", function() Snacks.picker.git_status() end, desc = "Find git files" },
         { "<leader>pr", function() Snacks.picker.recent() end, desc = "Recent" },
         { "<leader>pka", function() Snacks.picker.keymaps() end, desc = "Keymaps" },
         { "<leader>pkn", function() Snacks.picker.keymaps({ modes = { "n" } }) end, desc = "Keymaps normal" },
