@@ -11,6 +11,7 @@ local colorschemes = {
     {
         'yorik1984/newpaper.nvim',
         name = 'newpaper',
+        commit = 'ee0e43f203511b1a8eb96f2f44723503defbb2cb',
         opts = {
             style               = 'light',
             italic_strings      = false,
@@ -19,12 +20,12 @@ local colorschemes = {
             italic_functions    = false,
             italic_variables    = false,
             hide_eob            = true,
-            -- lightness           = 0, -- -1(all colors '#000000') to 1(all colors '#FFFFFF').
-            -- saturation          = 0, -- from -1 to 1. Recommended value: -0.2 - 0.2
-            -- greyscale           = false, -- 'lightness', 'average', 'luminosity', false
-            -- -- colors              = newpaper_palette.custom, -- todo update
-            -- colors_advanced     = newpaper_palette.custom_advanced,
-            -- custom_highlights   = newpaper_palette.custom_highlights,
+            lightness           = 0, -- -1(all colors '#000000') to 1(all colors '#FFFFFF').
+            saturation          = 0, -- from -1 to 1. Recommended value: -0.2 - 0.2
+            greyscale           = false, -- 'lightness', 'average', 'luminosity', false
+            colors              = newpaper_palette.custom,
+            colors_advanced     = newpaper_palette.custom_advanced,
+            custom_highlights   = newpaper_palette.custom_highlights,
         },
     },
     {
