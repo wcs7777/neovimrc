@@ -1,9 +1,8 @@
 return {
 	"nvimtools/hydra.nvim",
-	opts = {
-	},
+	opts = {},
 	config = function(_, opts)
-		require('hydra').setup(opts)
-		require('user.hydras')
+		require("hydra").setup(opts)
+		require("user.hydras")
 	end,
 }

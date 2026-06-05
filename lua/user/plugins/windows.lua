@@ -1,12 +1,12 @@
-local desc = require('user.utils').desc
-local cmd = require('user.utils').cmd
+local desc = require("user.utils").desc
+local cmd = require("user.utils").cmd
 
 return {
 	"anuvyklack/windows.nvim",
 	dependencies = {
 		"anuvyklack/middleclass",
 	},
-    event = { "BufReadPre" },
+	event = { "BufReadPre" },
 	opts = {
 		autowidth = {
 			enable = true,
@@ -23,8 +23,8 @@ return {
 			enable = false,
 			duration = 300,
 			fps = 30,
-			easing = "in_out_sine"
-		}
+			easing = "in_out_sine",
+		},
 	},
 	config = function(_, opts)
 		require("windows").setup(opts)

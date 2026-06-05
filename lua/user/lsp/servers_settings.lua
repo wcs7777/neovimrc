@@ -1,45 +1,40 @@
 local servers = {
-    ['lua_ls'] = require('user.lsp.servers.lua_ls'),
-    ['basedpyright'] = require('user.lsp.servers.basedpyright'),
-    ['clangd'] = {},
-    ['css_variables'] = {},
-    ['cssls'] = {},
-    ['cssmodules_ls'] = {},
-    ['emmet_ls'] = {},
-    ['html'] = {},
-    ['ts_ls'] = {},
-    -- ['jdtls'] = {},
+	["lua_ls"] = require("user.lsp.servers.lua_ls"),
+	["basedpyright"] = require("user.lsp.servers.basedpyright"),
+	["clangd"] = {},
+	["css_variables"] = {},
+	["cssls"] = {},
+	["cssmodules_ls"] = {},
+	["emmet_ls"] = {},
+	["html"] = {},
+	["ts_ls"] = {},
+	-- ['jdtls'] = {},
 }
 
 local capabilities = vim.tbl_deep_extend(
-    "force",
-    {},
-    vim.lsp.protocol.make_client_capabilities(),
-    require('blink.cmp').get_lsp_capabilities()
+	"force",
+	{},
+	vim.lsp.protocol.make_client_capabilities(),
+	require("blink.cmp").get_lsp_capabilities()
 )
 
 for server, config in pairs(servers) do
-    config.capabilities = vim.tbl_deep_extend(
-        'force',
-        {},
-        capabilities,
-        config.capabilities or {}
-    )
-    if not config.capabilities.workspace then
-        config.capabilities.workspace = {}
-    end
-    if not config.capabilities.workspace.fileOperations then
-        config.capabilities.workspace.fileOperations = {
-            didRename = true,
-            willRename = true,
-        }
-    end
-    vim.lsp.config(server, config)
+	config.capabilities = vim.tbl_deep_extend("force", {}, capabilities, config.capabilities or {})
+	if not config.capabilities.workspace then
+		config.capabilities.workspace = {}
+	end
+	if not config.capabilities.workspace.fileOperations then
+		config.capabilities.workspace.fileOperations = {
+			didRename = true,
+			willRename = true,
+		}
+	end
+	vim.lsp.config(server, config)
 end
 
 local ensure_installed = vim.tbl_keys(servers or {})
 
-require('mason-lspconfig').setup({
-    ensure_installed = ensure_installed,
-    automatic_enable = true,
+require("mason-lspconfig").setup({
+	ensure_installed = ensure_installed,
+	automatic_enable = true,
 })

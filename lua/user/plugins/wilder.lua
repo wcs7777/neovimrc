@@ -1,7 +1,7 @@
 return {
-    "gelguy/wilder.nvim",
-    event = "CmdlineEnter",
-    opts = {
-        modes = {':', '/', '?'},
-    },
+	"gelguy/wilder.nvim",
+	event = "CmdlineEnter",
+	opts = {
+		modes = { ":", "/", "?" },
+	},
 }

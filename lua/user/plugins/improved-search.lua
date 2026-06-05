@@ -1,4 +1,4 @@
-local desc = require('user.utils').desc
+local desc = require("user.utils").desc
 
 return {
 	"wcs7777/improved-search.nvim",

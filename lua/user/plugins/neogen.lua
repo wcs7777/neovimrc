@@ -4,7 +4,7 @@ return {
 	"danymat/neogen",
 	opts = {},
 	config = function(_, opts)
-		local neogen = require('neogen')
+		local neogen = require("neogen")
 		---@param type string   func, class, type or file
 		local function generate(type)
 			return function()

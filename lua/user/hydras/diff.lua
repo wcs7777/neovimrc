@@ -1,5 +1,5 @@
-local Hydra = require('hydra')
-local cmd = require('user.utils').cmd
+local Hydra = require("hydra")
+local cmd = require("user.utils").cmd
 
 local hint = [[
  ^ Diff
@@ -18,32 +18,32 @@ local hint = [[
 ]]
 
 return Hydra({
-    name = 'Diff',
-    hint = hint,
-    config = {
-        color = 'pink',
-        invoke_on_body = true,
-        hint = {
-            position = 'bottom-right',
-            float_opts = {
-                border = 'rounded',
-            },
-        },
-    },
-    mode = {'n'},
-    body = '<leader>yi',
-    heads = {
+	name = "Diff",
+	hint = hint,
+	config = {
+		color = "pink",
+		invoke_on_body = true,
+		hint = {
+			position = "bottom-right",
+			float_opts = {
+				border = "rounded",
+			},
+		},
+	},
+	mode = { "n" },
+	body = "<leader>yi",
+	heads = {
 
-        { '<Left>',  ':diffget<CR>', { desc = 'diff get', mode = {"n", "x"} } },
-        { '<Right>', ':diffput<CR>', { desc = 'diff put', mode = {"n", "x"} } },
-        { '<Down>',  ']c',           { desc = 'previous change' } },
-        { '<Up>',    '[c',           { desc = 'next change' } },
+		{ "<Left>", ":diffget<CR>", { desc = "diff get", mode = { "n", "x" } } },
+		{ "<Right>", ":diffput<CR>", { desc = "diff put", mode = { "n", "x" } } },
+		{ "<Down>", "]c", { desc = "previous change" } },
+		{ "<Up>", "[c", { desc = "next change" } },
 
-        { '9', ':diffthis<CR>',   { desc = 'diff this' } },
-        { '8', ':diffupdate<CR>', { desc = 'diff update' } },
-        { '7', ':diffoff<CR>',    { desc = 'diff off' } },
-        { 'q', ':diffoff!<CR>',   { desc = 'diff off all', exit = true } },
+		{ "9", ":diffthis<CR>", { desc = "diff this" } },
+		{ "8", ":diffupdate<CR>", { desc = "diff update" } },
+		{ "7", ":diffoff<CR>", { desc = "diff off" } },
+		{ "q", ":diffoff!<CR>", { desc = "diff off all", exit = true } },
 
-        { '<Esc>', nil, { exit = true } },
-    }
+		{ "<Esc>", nil, { exit = true } },
+	},
 })

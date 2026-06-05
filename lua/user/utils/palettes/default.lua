@@ -1,11 +1,11 @@
 local M = {}
 
 M.light = {
-    bg0 = '#F0EFEA',
-    bg1 = '#fcfbf7',
-    bg2 = '#F7F6F1',
-    bg3 = '#F7F5E8',
-    bg4 = '#F2EFD9',
+	bg0 = "#F0EFEA",
+	bg1 = "#fcfbf7",
+	bg2 = "#F7F6F1",
+	bg3 = "#F7F5E8",
+	bg4 = "#F2EFD9",
 }
 
 --[[

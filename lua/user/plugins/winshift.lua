@@ -1,5 +1,5 @@
-local desc = require('user.utils').desc
-local cmd = require('user.utils').cmd
+local desc = require("user.utils").desc
+local cmd = require("user.utils").cmd
 
 return {
 	"sindrets/winshift.nvim",

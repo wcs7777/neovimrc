@@ -1,6 +1,6 @@
 return {
-    'nmac427/guess-indent.nvim',
-    event = { "BufEnter" },
-    opts = {},
-    config = true,
+	"nmac427/guess-indent.nvim",
+	event = { "BufEnter" },
+	opts = {},
+	config = true,
 }

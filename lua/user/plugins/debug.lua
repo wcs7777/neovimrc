@@ -20,13 +20,13 @@ return {
 		mason_dap.setup({
 			automatic_installation = false,
 			ensure_installed = {
-				'python',
+				"python",
 			},
 			handlers = {
 				function(config)
 					-- all sources with no handler get passed here
 					-- Keep original functionality
-					require('mason-nvim-dap').default_setup(config)
+					require("mason-nvim-dap").default_setup(config)
 				end,
 			},
 		})
@@ -37,8 +37,8 @@ return {
 			virt_text_win_col = nil,
 		})
 
-		local desc = require('user.utils').desc
-		local hydra = require('user.hydras.debug')
+		local desc = require("user.utils").desc
+		local hydra = require("user.hydras.debug")
 
 		dap.listeners.before.attach.dapui_config = function()
 			dapui.open()
@@ -65,6 +65,5 @@ return {
 		vim.keymap.set("n", "<leader>dbr", dap.continue, desc("Debug Run/Continue"))
 		vim.keymap.set("n", "<F17>", dap.terminate, desc("Debug Terminate"))
 		vim.keymap.set("n", "<leader>dbx", dap.terminate, desc("Debug Terminate"))
-
 	end,
 }
