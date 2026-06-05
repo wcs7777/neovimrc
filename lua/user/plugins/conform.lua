@@ -13,21 +13,16 @@ return {
 			lua = { "stylua" },
 			markdown = { "prettier" },
 			python = { "isort", "ruff_format", stop_at_first = false },
-			sql = { "my_sqlfluff" },
+			sql = { "sqlfluff" },
 			typescript = { "prettierd", "prettier" },
 			typescriptreact = { "prettierd", "prettier" },
 			xml = { "xmlstarlet" },
 		},
 		formatters = {
-			my_sqlfluff = {
+			sqlfluff = {
 				command = "sqlfluff",
-				args = {
-					"format",
-					"--dialect",
-					"sqlite",
-					"-",
-				},
-				stdin = true,
+				args = { "format", "--dialect=sqlite", "-" },
+				require_cwd = false,
 			},
 		},
 		stop_at_first = true,
