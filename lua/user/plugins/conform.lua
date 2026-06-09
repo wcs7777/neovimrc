@@ -19,6 +19,27 @@ return {
 			xml = { "xmlstarlet" },
 		},
 		formatters = {
+			prettier = {
+				prepend_args = function(self, ctx)
+					local global_config = vim.fn.expand("~/.config/.prettierrc.json")
+					local markers = {
+						".prettierrc",
+						".prettierrc.json",
+						".prettierrc.yml",
+						".prettierrc.yaml",
+						".prettierrc.json5",
+						".prettierrc.js",
+						".prettierrc.cjs",
+						"prettier.config.js",
+						"prettier.config.cjs",
+					}
+					local has_project_config = vim.fs.root(ctx.dirname, markers) ~= nil
+					if not has_project_config then
+						return { "--config", global_config }
+					end
+					return {}
+				end,
+			},
 			sqlfluff = {
 				command = "sqlfluff",
 				args = { "format", "--dialect=sqlite", "-" },
@@ -35,7 +56,7 @@ return {
 				return
 			end
 			return {
-				timeout_ms = 500,
+				timeout_ms = 5000,
 				lsp_format = "fallback", -- Fall back to LSP if the formatter isn't available
 			}
 		end,
