@@ -137,6 +137,12 @@ local function delete_other_buffers()
 	end
 end
 
+local function selection_range(direction)
+	return function()
+		vim.lsp.buf.selection_range(direction)
+	end
+end
+
 -- _Window
 vim.keymap.set("n", "<C-h>", "<C-w>h", desc("Move to left window"))
 vim.keymap.set("n", "<C-j>", "<C-w>j", desc("Move to below window"))
@@ -172,6 +178,7 @@ vim.keymap.set("n", "<leader>qlo", cmd("lopen"), desc("Loclist open"))
 vim.keymap.set("n", "<leader>qlc", cmd("lclose"), desc("Loclist close"))
 vim.keymap.set("n", "<leader>dt", diff_this, desc("Diff this"))
 vim.keymap.set("n", "<leader>do", diff_off, desc("Diff off"))
+vim.keymap.set({ "n", "v" }, "<C-space>", selection_range(1), desc("Select outer node"))
 vim.keymap.set({ "n", "v" }, "<leader>dp", ":diffput<CR>", desc("Diff put"))
 vim.keymap.set({ "n", "v" }, "<leader>dg", ":diffget<CR>", desc("Diff get"))
 
