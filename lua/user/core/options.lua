@@ -23,6 +23,7 @@ vim.opt.mouse = { n = true, v = true, c = true, h = true, r = true, i = false }
 vim.opt.number = true
 vim.opt.pumheight = 10
 vim.opt.relativenumber = true
+vim.opt.nrformats = { "blank" }
 vim.opt.runtimepath:remove("/usr/share/vim/vimfiles")
 vim.opt.scrolloff = 2
 vim.opt.shiftwidth = tabsize

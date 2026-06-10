@@ -187,6 +187,12 @@ vim.keymap.set("n", "<leader>tr", toggle_opt("relativenumber"), desc("Toggle rel
 vim.keymap.set("n", "<leader>tsp", toggle_opt("spell"), desc("Toggle spell"))
 vim.keymap.set("n", "<leader>th", toggle_opt("hlsearch"), desc("Toggle highlight search"))
 vim.keymap.set("n", "<leader>twr", toggle_opt("wrap"), desc("Toggle wrap"))
+vim.keymap.set(
+	"n",
+	"<leader>tnf",
+	toggle_opt("nrformats", { "blank" }, { "blank", "alpha" }),
+	desc("Toggle nrformats alpha")
+)
 vim.keymap.set("n", "<M-z>", toggle_opt("wrap"), desc("Toggle wrap"))
 
 -- _Text
