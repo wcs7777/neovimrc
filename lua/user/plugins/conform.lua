@@ -70,20 +70,27 @@ return {
 			vim.notify("Conform format on save " .. (enabled and "enabled" or "disabled"))
 		end
 
-		local function format()
-			conform.format({ async = true }, function(err)
-				if err then
-					vim.notify(err)
-					return
+		local function format(formatters)
+			return function()
+				local options = { async = true }
+				if formatters then
+					options["formatters"] = formatters
 				end
-				local mode = vim.api.nvim_get_mode().mode
-				if vim.startswith(string.lower(mode), "v") then
-					vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<Esc>", true, false, true), "n", true)
-				end
-			end)
+				conform.format(options, function(err)
+					if err then
+						vim.notify(err)
+						return
+					end
+					local mode = vim.api.nvim_get_mode().mode
+					if vim.startswith(string.lower(mode), "v") then
+						vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<Esc>", true, false, true), "n", true)
+					end
+				end)
+			end
 		end
 
-		vim.keymap.set({ "n", "v" }, "<leader>ft", format, desc("Format file or range"))
+		vim.keymap.set({ "n", "v" }, "<leader>ft", format(), desc("Format file or range"))
+		vim.keymap.set({ "n", "v" }, "<leader>fi", format({ "injected" }), desc("Format file or range injected code"))
 		vim.keymap.set("n", "<leader>tf", toggle, desc("Toggle conform format on save"))
 	end,
 }
