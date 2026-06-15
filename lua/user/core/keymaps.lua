@@ -10,6 +10,8 @@ local vert_column = "80"
 
 local desc = require("user.utils").desc
 local cmd = require("user.utils").cmd
+local kkp_enabled = require("user.utils").kkp_enabled
+local ifkkp = require("user.utils").ifkkp
 
 local function print_copy_cur_file()
 	vim.fn.setreg("+", vim.fn.expand("%:p"))
@@ -203,9 +205,8 @@ vim.keymap.set(
 vim.keymap.set("n", "<M-z>", toggle_opt("wrap"), desc("Toggle wrap"))
 
 -- _Text
-vim.keymap.set("i", "<C-BS>", '<C-\\><C-o>"_db', desc("Delete previous word"))
-vim.keymap.set("i", "<C-Del>", '<C-\\><C-o>"_dw', desc("Delete next word"))
-vim.keymap.set("i", "<C-H>", '<C-\\><C-o>"_db', desc("Delete previous word"))
+vim.keymap.set("i", ifkkp("<C-BS>", "<C-H>"), "<C-w>", desc("Delete previous word"))
+vim.keymap.set("i", "<C-Del>", "<C-o>dW", desc("Delete next word"))
 vim.keymap.set({ "n", "v" }, "<leader>sp", '"+p', desc("Paste system register"))
 vim.keymap.set("v", "<leader>sy", '"+y', desc("Yank to system register"))
 vim.keymap.set("n", "<leader>asp", 'ggVG"+p', desc("Replace all with system register"))
