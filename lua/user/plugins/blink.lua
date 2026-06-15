@@ -9,6 +9,7 @@ return {
 	---@module 'blink.cmp'
 	---@type blink.cmp.Config
 	opts = {
+		cmdline = { enabled = true },
 		completion = {
 			menu = {
 				auto_show = function()
