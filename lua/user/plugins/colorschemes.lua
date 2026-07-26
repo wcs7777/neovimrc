@@ -11,7 +11,6 @@ local colorschemes = {
 	{
 		"yorik1984/newpaper.nvim",
 		name = "newpaper",
-		commit = "ee0e43f203511b1a8eb96f2f44723503defbb2cb",
 		opts = {
 			style = "light",
 			italic_strings = false,

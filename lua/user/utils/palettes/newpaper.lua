@@ -42,7 +42,7 @@ M.custom = {
 	tex_lightgreen = coolors.dark.pink.dusty_lavender,
 	tex_math = coolors.dark.blue.glaucous2,
 	tex_math_cmd = coolors.dark.pink.berry_cream,
-	tex_math_delim = coolors.dark.pink.mauve_shadow,
+	tex_symbol = coolors.dark.pink.mauve_shadow,
 	tex_part_title = coolors.dark.pink.raspberry_plum,
 	tex_tikz_green = coolors.dark.violet.violet_ray,
 	tex_tikz_verb = coolors.dark.brown.clay_soil,
@@ -192,12 +192,14 @@ M.default = {
 
 	-- TeX
 	tex_maroon = "#A2251A",
+	tex_maroon_soft = "#bd584e",
 	tex_olive = "#89802B",
 	tex_navy = "#1E40C2",
 	tex_red = "#D84342",
 	tex_blue = "#0089B3",
 	tex_teal = "#005579",
 	tex_magenta = "#E00050",
+	tex_magenta_soft = "#e33472",
 	tex_aqua = "#14B9C4",
 	tex_orange = "#D37300",
 	tex_redorange = "#F3752D",
@@ -208,6 +210,7 @@ M.default = {
 	tex_pink = "#D75F66",
 	tex_lightgreen = "#20A93E",
 
+	tex_greek = "#5FBCB0",
 	tex_math = "#008000",
 	tex_math_cmd = "#636D1D",
 	tex_math_delim = "#349279",
@@ -235,6 +238,7 @@ M.default = {
 	tex_SI_magenta = "#BC5AA2",
 	tex_SI_yellow = "#C88900",
 
+	tex_error = "#362C3D",
 	tex_group_error = "#EBF2FF",
 	tex_math_error = "#CCE5CC",
 	tex_math_delim_error = "#FBE5CC",
@@ -251,6 +255,7 @@ M.default = {
 	-- Lua
 	lua_navy = "#030380",
 	lua_blue = "#128897",
+	love_teal = "#66A7AC",
 
 	-- Jinja
 	jinja_red = "#B80000",
