@@ -71,4 +71,7 @@ return function(event)
 		vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = buffer }), { bufnr = buffer })
 	end, desc("Toggle inlay hint"))
 	vim.keymap.set("n", "<leader>oi", organize_imports, desc("Organize imports"))
+	vim.keymap.set("n", "<leader>lr", function()
+		vim.cmd("lsp restart")
+	end, desc("Restart LSP"))
 end
