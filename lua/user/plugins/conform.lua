@@ -12,7 +12,7 @@ return {
 			json = { "prettier" },
 			lua = { "stylua" },
 			markdown = { "prettier" },
-			python = { "isort", "ruff_format", stop_at_first = false },
+			python = { "ruff_fix", "ruff_organize_imports", "ruff_format", stop_at_first = false },
 			sql = { "sqlfluff" },
 			typescript = { "prettierd", "prettier" },
 			typescriptreact = { "prettierd", "prettier" },
@@ -39,6 +39,20 @@ return {
 					end
 					return {}
 				end,
+			},
+			ruff_fix = {
+				-- only remove unused imports (F401)
+				args = {
+					"check",
+					"--fix",
+					"--force-exclude",
+					"--select",
+					"F401",
+					"--exit-zero",
+					"--stdin-filename",
+					"$FILENAME",
+					"-",
+				},
 			},
 			sqlfluff = {
 				command = "sqlfluff",
